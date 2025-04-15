@@ -5,7 +5,7 @@ main = Blueprint('main', __name__)
 
 # Add user route
 @main.route('/addUser', methods=['POST'])
-def add_user():
+def insert_user():
     user_data = request.get_json()  
 
     name = user_data.get('name')
@@ -28,7 +28,7 @@ def get_users():
     
 #Delete User route
 @main.route('/deleteUser/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id):
+def deleteUser(user_id):
     success = delete_user(user_id)
     if success:
         return jsonify({"message": "User deleted"}), 200
