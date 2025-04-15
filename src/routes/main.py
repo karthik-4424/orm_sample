@@ -3,7 +3,7 @@ from src.controllers import home_controller
 
 main = Blueprint('main', __name__)
 
-# Add user route: POST request
+# Add user route
 @main.route('/addUser', methods=['POST'])
 def add_user():
     user_data = request.get_json()  
@@ -15,12 +15,12 @@ def add_user():
         return jsonify({"id": user.id, "name": user.name}), 201  
     return jsonify({"error": "Name is required"}), 400
 
+#Get User route
 @main.route('/getUsers', methods=['GET'])
 def get_users():
     users = home_controller.get_all_users()
     
     if users:
-        # Convert the users list into a list of dictionaries to return in JSON format
         users_data = [{"id": user.id, "name": user.name} for user in users]
         return jsonify(users_data), 200
     else:
