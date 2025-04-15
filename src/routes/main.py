@@ -26,7 +26,7 @@ def get_users():
     else:
         return jsonify({"message": "No users found"}), 404
     
-
+#Delete User route
 @main.route('/deleteUser/<int:user_id>', methods=['DELETE'])
 def delete_user(user_id):
     success = home_controller.delete_user(user_id)
